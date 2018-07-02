@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en"  style= "background-color:#1A1A1D;">
+
+<head>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/vega/3.0.8/vega.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-lite/2.0.3/vega-lite.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-embed/3.0.0-rc7/vega-embed.js"></script>
+   
+<title>Daniel Lenehan - G1</title>
+
+<style>
+         .vega-actions a {
+         padding: 0.5em;
+         }
+* {
+    box-sizing: border-box;
+	}
+.column 
+{
+    float: left;
+    padding: 10px;
+}
+
+.column.middle 
+{
+    width: 50%;
+}
+strong
+{
+color:#C3073F;
+text-decoration: underline;
+}
+@media (max-width: 600px) 
+{
+ .column.side, .column.middle 
+ {
+    width: 100%;
+}
+}
+table, td, th {
+    border: 1px solid black;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+tr:nth-child(odd){background-color: #f2f2f2}
+td {
+    height: 50px;
+    vertical-align: bottom;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="row">
+ 
+
+  
+  
+  <!-- This div contains the graph and the heading of the graph -->
+  
+  <div class="column middle" >
+<center>    <h2 style="color:white;text-decoration:underline;">Macro-nutrient calories as percentages of Total calories</h2>  </center>
+<p id="vis" align="center"></p><br/>
+  </div>
+	
+<!-- This is the second table to the right of the graph --> 
+
+<div class="column side"  style="width:50%;color:#4056A1;border-style: solid;text-align:left;background-color:white;border-color:#1A1A1D;">
+ 
+    <table >
+    <tbody>
+	 <tr>
+    <td style="width: 125px; vertical-align: top;"><strong>Name</strong></td>
+    <td style="vertical-align: top;">Daniel Lenehan <br></br></td>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;"><strong>Student Number:</strong></td>
+    <td style="vertical-align: top;">15499152 <br></br></td>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;"><strong>Dataset description:</strong></td>
+    <td style="vertical-align: top;">
+    <a href="https://raw.githubusercontent.com/pffy/data-mcdonalds-nutritionfacts/v29/textfiles/pffy-data-mcdonalds-nutrition-facts.tsv" target="_blank" rel="noopener">McDonalds Menu Dataset</a> <br>
+    This data set contains  nutritional information about McDonald's  food menu updated up to 2015. It contains fields like Item name, food category, calories and fields for all the macro-nutrients (protein,  carbohydrates, fat, sugar, fiber etc) .<br></br>
+    </td>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;"><strong>Initial questions:</strong></td>
+    <td style="vertical-align: top;">How does the amount of each macro-nutrient vary across the different food choices as a percentage, which categories contain the most calories and does the different levels of each macro-nutrient in a meal effect 
+	what the total calories of the meal will be. </td>
+    </tr>
+    <tr>
+    <td style="width: 125px; vertical-align: top;"><strong>Description:&nbsp;</strong></td>
+    <td style="vertical-align: top;">The aim of the
+graphs are to show how different meals in the categories on the menu are composed of different levels of protein, carbohydrates and fats, and to show 
+that depending on which of the macro nutrients the meal has more or less of, will effect the amount of total calories the meal has.
+The x-axis of each of the graphs display the amount of calories coming 
+from each macro-nutrient (Protein, carbohydrates and fat)  as a percentage of the total calories.
+The y-axis is always the total amount of calories and the black ruled line is the mean amount of calories. Each little square represents a different item of food on the menu and the 
+color represents the category. Tool-tip shows what item each of the rectangles represents as well as the calorie mean if you hover over the black ruled line.  <br></br></td>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;"><strong>Insight:</strong></td>
+    <td style="vertical-align: top;">All three graphs as a whole show that in general  breakfast meals are higher in calories (above the mean) , the salads are lower calories (below the mean) and the burger and chicken meals have multiple 
+options above and below the mean. In terms of the macro-nutrients the carbohydrate graph shows that the bulk of McDonalds menu lies in the between 20-45% carbohydrate range. If a meal  is made up of  28-38% carbohydrates 
+		then it will be over the mean of total calories and very likely be a high calorie meal. However if the meal ranges from under 28% or over 38% carbohydrates it is likely to be closer to and under the mean of total calories. 
+			The fat graph is the most interesting and explains for the shape of data in the other two graphs.  Straight away it shows that most of the items in the menu are made up of 40-60% fat., which isn't surprising. It also shows
+			that as the fat content starts to go up so does the total calories in a linear fashion. This is because 1g of fat is 9 calories in comparison to the 4 calories per 1g of protein or carbohydrates.  The protein graph shows that there
+			aren't really any high protein low calorie options in the McDonalds menu with the bulk of the menus items within the 10-20% range.  In conclusion a lot of the McDonalds menu is high in fat and the higher the fat content the higher the 
+			total calories and interestingly we found that the opposite is true for the other two macro-nutrients protein and carbohydrate. The higher they are the lower total calories will be.
+<br></br></td>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;"><strong>Design Considerations:</strong></td>
+    <td style="vertical-align: top;">
+	I used three rectangle plotted graphs because I felt I would be able to display the most amount of information through them as every item will be placed on the graph and it's information show by tool tip. I felt it was the most effective way of displaying the information across all items of the menu from the categories I choose , using color to represent  which category each item had came from.  <br> </br>
+	A common limitation which also affected me was over plotting, some of the items had very similar values and as a result were stacked on top of each other. A possible solution to this is increasing the size of the graph for more accuracy. 
+	<br></br>
+	Alternatively I considered using circle or point plots that would show similar trends however I preferred the rectangle plot. In terms of other graphs I considered using a line graph however I felt in this situation it would look too messy as there are a lot of items on show. To solve this I also considered binning the values and then using a linear plot but in general I don't like binning as i fell it removes a lot of information and sometimes makes the graph data look too linear when its not. So in the end I choose the rectangle plot.  
+	
+	<br></br>
+    </td>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;"><strong>Data filtering and transformation: </strong></td>
+    <td style="vertical-align: top;">I  did three calculations to get the amount of calories from each macro-nutrient as a percentage of the total calories of each item.
+	Then filtered out 6 of the ten fields as I only wanted to compare what most people would consider meals as appose to drinks and snacks. </td>
+    </tr>
+    </tbody>
+    </table>
+  </div>
+
+  </div>
+  
+  <!-- This is where the Vega lite code is  located..within script--> 
+  
+  <script type="text/javascript">
+    var yourVlSpec ={
+  "config":{
+    "background": "beige"
+  },
+    "description": "Three charts with a Total calories column and repated total protein, carbs and fats row. These charts compare the amount of calories from each Macronutrient (protein, carbs and fats) compared as a percentage with total calories of each food item.",
+  "$schema": 
+  "https://vega.github.io/schema/vega-lite/v2.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/pffy/data-mcdonalds-nutritionfacts/v29/textfiles/pffy-data-mcdonalds-nutrition-facts.tsv",
+    "format": {
+      "type": "tsv"
+    }
+  },
+"transform": [
+    {
+      "filter": "datum.CARB < 80 "
+    },
+
+    {"filter": {"field": "CATEGORY", "oneOf":["BURGERSANDWICH", "CHICKENFISH", "BREAKFAST", "SALAD"]}},
+
+    {"calculate": "( (datum.CARB * 4 ) / datum.CAL ) * 100 " , "as":
+"Percentage of calories from Carbohydrates"},
+
+    {"calculate": "( (datum.FAT * 9 ) / datum.CAL ) * 100 " , "as":
+"Percentage of calories from Fat"},
+
+    {"calculate": "( (datum.PRO * 4 ) / datum.CAL ) * 100 " , "as":
+"Percentage of calories from Protein"},
+
+    {"calculate": " datum.CAL " , "as":
+"Calories"}
+],
+
+  "repeat": {
+      "row": ["Percentage of calories from Carbohydrates", "Percentage of calories from Fat", "Percentage of calories from Protein"]
+  },
+
+ "spec": {
+
+ "layer": [
+
+    {
+    "width": 466,
+    "height": 350,
+"mark": "square",
+"encoding": {
+"x": {
+        "field": {"repeat": "row"},
+        "type": "quantitative",
+        "scale": {"domain": [0,85]}     
+          },
+"y": {
+        "field": "Calories",
+        "type": "quantitative",
+        "axis": {"title": "Total calories"}  
+      },
+            "color":{
+            "field": "CATEGORY",
+            "type" : "ordinal",
+            "scale": {"range": ["red", "yellow", "green", "blue"]}
+      },
+	      "tooltip": {
+      "field": "ITEM",
+      "type": "ordinal"
+    }
+}
+},
+
+
+{
+      "data": {
+         "values": [
+          {"CalThreshold": 465, "CalThresholdT": "(Mean of calories)"}
+        ]
+      },
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "dx": 335,
+          "dy": 10}
+          ,
+        "encoding": {
+          "text": {"field": "CalThresholdT", "type": "ordinal"}
+        },
+        "tooltip": {
+      "field": "Calories",
+      "aggregate": "mean",
+      "type": "ordinal"
+    }
+},
+
+{
+"mark": "rule",
+"encoding": {
+
+"y": {
+        "field": "Calories",
+        "aggregate": "mean",
+        "type": "quantitative"
+      },
+        "color":{
+        "value": "BLACK"
+      },
+           "size": {"value": 2},
+                            "tooltip": {
+      "field": "Calories",
+      "aggregate": "mean",
+      "type": "ordinal"
+    }
+}
+}
+
+]
+}
+}
+        vegaEmbed("#vis", yourVlSpec);
+  </script>
+</body>
+</html>

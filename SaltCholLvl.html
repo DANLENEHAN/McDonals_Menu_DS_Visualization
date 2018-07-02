@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en"  style= "background-color:#1A1A1D;">
+
+<head>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/vega/3.0.8/vega.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-lite/2.0.3/vega-lite.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-embed/3.0.0-rc7/vega-embed.js"></script>
+   
+<title>Daniel Lenehan - G2</title>
+
+
+
+<style>
+         .vega-actions a {
+         padding: 0.5em;
+         }
+* {
+    box-sizing: border-box;
+	}
+
+	
+.column 
+{
+    float: left;
+    padding: 10px;
+}
+
+.column.middle 
+{
+    width: 100%;
+}
+strong
+{
+color:#C3073F;
+text-decoration: underline;
+}
+@media (max-width: 600px) 
+{
+ .column.side, .column.middle 
+ {
+    width: 100%;
+}
+}
+table, td, th {
+    border: 1px solid black;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+tr:nth-child(odd){background-color: #f2f2f2}
+td {
+    height: 50px;
+    vertical-align: bottom;
+}
+
+</style>
+
+</head>
+
+<body>
+
+  <!-- This div for that contains the graph and the heading of the graph -->
+  
+  <div class="column middle" >
+<center>    <h2 style="color:white;text-decoration:underline;">Cholesterol and Salt levels vs Fat quantity</h2>  </center>
+<p id="vis" align="center"></p><br/>
+  </div>
+
+<div class="row">
+ 
+<!-- This is the table below the graph --> 
+
+<div class="column side"  style="width:100%;color:#4056A1;border-style: solid;text-align:left;background-color:white;border-color:#1A1A1D;">
+ 
+    <table >
+    <tbody>
+	    <td style="width: 125px; vertical-align: top;"><strong>Name</strong></td>
+    <td style="vertical-align: top;">Daniel Lenehan <br></br></td>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;"><strong>Student Number:</strong></td>
+    <td style="vertical-align: top;">15499152 <br></br></td>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;"><strong>Dataset description:</strong></td>
+    <td style="vertical-align: top;">
+    <a href="https://raw.githubusercontent.com/pffy/data-mcdonalds-nutritionfacts/v29/textfiles/pffy-data-mcdonalds-nutrition-facts.tsv" target="_blank" rel="noopener">McDonalds Menu Dataset</a> <br>
+    This data set contains  nutritional information about McDonald's  food menu updated up to 2015. It contains fields like Item name, food category, calories and fields for all the macro-nutrients (protein,  carbohydrates, fat, sugar, fiber etc) . <br></br>
+    </td>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;"><strong>Initial questions:</strong></td>
+    <td style="vertical-align: top;">Does the amount of fat in food items show any correlation with the amount of cholesterol and salt in a food item and does this vary across the different food categories.  How many of the McDonalds menu items and meals are very high in cholesterol
+and salt when compared with the daily recommended amount. To note the daily recommended amount for cholesterol is  200-300mg so I consider >= 200 to be high for one meal. The daily ideal recommended intake of salt is 1500mg so I decided that 1200mg would be considered high for a single meal.   </td>
+    </tr>
+    <tr>
+    <td style="width: 125px; vertical-align: top;"><strong>Description:&nbsp;</strong></td>
+    <td style="vertical-align: top;">There are four graphs on this page. The first is two show that there is or at least seems to be a big correlation between fat levels and cholesterol and salt levels. The second aim is define a high level of cholesterol (200mg) and a high level of salt (1200mg) with a 
+	clear ruled line through the line graphs, allowing us to see which of the chosen categories tend to rise over these high levels of salt and cholesterol.  The two bar charts clearly define which categories are the main offenders, containing the most food items with high levels of salt and cholesterol.  In the line graphs the 
+	y-axis are for cholesterol and salt respectively and the x-axis are for total fat. The bar charts x-axis are for the number/count of meal items with high cholesterol or salt respectively and the y-axis are for categories.  There are tool-tips on every piece of data on the graph, in the line graph showing the category when hovering over the colored lines and the limit values when you hover of the ruled lines. The tool-tip shows the bar value for the bar charts.  <br></br></td>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;"><strong>Insight:</strong></td>
+    <td style="vertical-align: top;">The graphs showcase quite interesting information that kind of surprised me a little bit. I knew there would be some sort of correlation between cholesterol, salt and fat but not such a clear cut one like this. In the two line graphs at first glance you can clearly see as the fat content in grams starts to increase so too does the amount of cholesterol and salt across each category.  In the cholesterol vs fat quantity graph it is interesting to see that only the two breakfast categories ever go over the cholesterol limit I set while the chicken and burger categories for the most part are quite low 
+below this limit. Contrastingly in the salt vs fat quantity graph we can see that all categories do have items that go above the salt limit. From what we saw from the previous chart this shows that McDonalds food items are not only high in fat but very high in salt too. The two bar charts give a clearer view of which categories are the worst 
+offenders for high cholesterol and salt. It shows the number of items in each category which rise above these levels.  As we found out above it clearly shows that breakfast meals are the worst for high cholesterol and salt. However there are still a lot of items very high in salt in both the burger and chicken categories. 
+<br></br></td>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;"><strong>Design Considerations:</strong></td>
+    <td style="vertical-align: top;">
+I used line graphs because I feel it looks clearer and shows trends especially linear trends much more effectively. Which is seen in both graphs with the linear correlation trend with salt,  cholesterol and fat. With the use of color I could also easily show the different categories and the different trends each one follows. I felt the two ruled lines were also very effective and interesting to look at. They also clearly
+define which categories are passing the high levels and in the danger zone. I then used two bar charts to switch up the graphs a bit and to showcase more clear cut numerical data. Bar charts are the most commonly used data visualization so they are always a good addition to have. The use of the same colors makes up for the 
+line graphs limitation and shows how many items in each category are above the high level zone.      <br> </br>
+	Some limitations for the line graph are that line graphs cannot tell you which items or meals are above or below the high level line and how many. Instead  give a more general view of the categories information. The bar charts suffer from the same limitation as they can only show the categories through color but not individual items. 
+	<br></br>
+	I considered using circle, rectangle, triangle or point plots in all of the graphs as this would show all the individual items/ meals and importantly which ones were causing the data that the graphs show, however this would have looked too similar to my last graph and I felt the line graphs were better for showing the linear trends. I also felt that really this information of each item was not needed to show the trends displayed in the graphs above so the effect would be the same. 
+ 	
+	<br></br>
+    </td>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;"><strong>Data filtering and transformation: </strong></td>
+    <td style="vertical-align: top;">For all the graphs I filtered out all categories but  the four meal categories as they  provide the most interesting data.  I also removed the 40 chicken nugget meal as this always increases the bound of the graph too much making it look bad.  I added the cholesterol limit and salt limit values to the data so they could be displayed in the graph.  For the bar charts  I filtered out all the items in the categories that were under the salt and  cholesterol limits so the count of items above those limits would be easier to generate. </td>
+    </tr>
+    </tbody>
+    </table>
+  </div>
+
+  </div>
+  
+  <!-- This is where the Vega lite code is  located..within script--> 
+  
+  <script type="text/javascript">
+    var yourVlSpec ={
+  "config":{
+    "background": "beige"
+  },
+    "description": "The first two line graphs show the relationship between cholestrol and salt with fat. They also show which categories contain a high amount of either cholestrol or salt (lines which rise above unhealthy line). The second two graphs show the number of items in each catergory which contain a high level of cholestrol or salt when compared to the daily allowance.  ",
+  "$schema": 
+  "https://vega.github.io/schema/vega-lite/v2.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/pffy/data-mcdonalds-nutritionfacts/v29/textfiles/pffy-data-mcdonalds-nutrition-facts.tsv",
+    "format": {
+      "type": "tsv"
+    }
+  },
+
+  "vconcat": [
+      {
+
+  "hconcat": [
+    {
+
+"transform": [
+    {"filter": {"field": "CATEGORY", "oneOf":["BREAKFAST", "ALLDAYBREAKFAST", "BURGERSANDWICH", "CHICKENFISH"]}},
+    
+    {
+      "filter": "datum.CAL < 1000 "
+    }
+
+],
+ "layer": [
+
+    {
+    "title": {
+      "text": "Cholestrol vs fat quanity",
+      "anchor": "middle"
+  },
+
+    "width": 400,
+    "height": 300,
+    
+"mark": "line",
+"encoding": {
+
+"x": {
+        "field": "FAT",
+        "type": "quantitative",
+        "axis": {"title": "Total fat (g)"}     
+          },
+
+"y": {
+        "field": "CHOL",
+        "type": "quantitative",
+        "axis": {"title": "Total Cholestrol (mg)"}  
+      },
+
+            "color":{
+            "field": "CATEGORY",
+            "type" : "ordinal",
+            "scale": {"range": ["red", "yellow", "blue", "green"]}
+            },
+      "tooltip": {
+      "field": "CATEGORY",
+      "type": "ordinal"
+     }
+}
+
+},
+
+{
+      "data": {
+         "values": [
+          {"CholThreshold": 200, "CholThresholdT": " High Level !"}
+        ]
+      },
+      "layer": [{
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "dx": 290,
+          "dy": 15}
+          ,
+        "encoding": {
+          "text": {"field": "CholThresholdT", "type": "ordinal"}
+        }
+      },
+
+{
+"mark": "rule",
+"encoding": {
+
+"y": {
+        "field": "CholThreshold",
+        "type": "quantitative"
+      },
+        "color":{
+        "value": "BLACK"
+      },
+           "size": {"value": 1.5},
+                 "tooltip": {
+      "field": "CholThreshold",
+      "type": "ordinal"
+    } 
+}
+}
+]
+}
+]
+},
+
+{
+"transform": [
+    {"filter": {"field": "CATEGORY", "oneOf":["BREAKFAST", "ALLDAYBREAKFAST", "BURGERSANDWICH", "CHICKENFISH"]}},
+            {
+      "filter": "datum.CAL < 1000 "
+    }
+],
+ "layer": [
+    {
+    "title": {
+      "text": "Salt vs fat quanity",
+      "anchor": "middle"
+  },
+    "width": 400,
+    "height": 300,
+"mark": "line",
+"encoding": {
+"x": {
+        "field": "FAT",
+        "type": "quantitative",
+        "axis": {"title": "Total fat (g)"}      
+          },
+"y": {
+        "field": "SALT",
+        "type": "quantitative",
+        "axis": {"title": "Total Salt (mg)"}  
+      },
+            "color":{
+            "field": "CATEGORY",
+            "type" : "ordinal"
+            },                                    	      
+      "tooltip": {
+      "field": "CATEGORY",
+      "type": "ordinal"
+    }
+}
+},
+
+{
+      "data": {
+         "values": [
+          {"SaltThreshold": 1200, "SaltThresholdT": "High level !"}
+        ]
+      },
+      "layer": [{
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "dx": 295,
+          "dy": -18}
+          ,
+        "encoding": {
+          "text": {"field": "SaltThresholdT", "type": "ordinal"}
+        }
+      },
+{
+"mark": "rule",
+"encoding": {
+
+"y": {
+        "field": "SaltThreshold",
+        "type": "quantitative"
+      },
+        "color":{
+        "value": "BLACK"
+      },
+           "size": {"value": 2},
+      "tooltip": {
+      "field": "SaltThreshold",
+      "type": "ordinal"
+    }
+}
+}
+]
+}
+]
+}
+]
+},
+
+{
+"hconcat": [
+{
+"transform": [
+        {"filter": {"field": "CATEGORY", "oneOf":["BREAKFAST", "ALLDAYBREAKFAST", "BURGERSANDWICH", "CHICKENFISH"]}},
+    {
+      "filter": "datum.CHOL >= 200"
+    },
+    {
+        "filter": "datum.CAL < 1000"
+    }
+
+],
+
+    "width": 400,
+    "height": 200,
+"mark": "bar",
+"encoding": {
+"x": {
+        "field": "CHOL",
+        "aggregate": "count",
+        "type": "quantitative",
+        "axis": {"title": "Number of meal items with high cholestrol ( >= 200mg)"}    
+          },
+"y": {
+        "field": "CATEGORY",
+        "type": "ordinal",
+        "sort": "acending"
+      },
+            "color":{
+            "field": "CATEGORY",
+            "type" : "ordinal",
+            "scale": {"range": ["red", "yellow", "blue", "green"]}
+            },
+    "tooltip": {
+      "field": "CHOL",
+      "aggregate": "count",
+      "type": "ordinal"
+    }
+      
+
+}
+},
+
+{
+"transform": [
+        {"filter": {"field": "CATEGORY", "oneOf":["BREAKFAST", "ALLDAYBREAKFAST", "BURGERSANDWICH", "CHICKENFISH"]}},
+    {
+      "filter": "datum.SALT >= 1200"
+    },
+    {
+        "filter": "datum.CAL < 1000"
+    }
+
+],
+
+    "width": 400,
+    "height": 200,
+"mark": "bar",
+"encoding": {
+"x": {
+        "field": "CHOL",
+        "aggregate": "count",
+        "type": "quantitative",
+        "axis": {"title": "Number of meal items with high salt levels ( >= 1200mg)"}    
+          },
+"y": {
+        "field": "CATEGORY",
+        "type": "ordinal",
+        "sort": "acending"
+      },
+            "color":{
+            "field": "CATEGORY",
+            "type" : "ordinal",
+            "scale": {"range": ["red", "yellow", "blue", "green"]}
+            },
+      "tooltip": {
+      "field": "SALT",
+      "aggregate": "count",
+      "type": "ordinal"
+    }
+}
+}
+]
+}
+]
+}
+        vegaEmbed("#vis", yourVlSpec);
+  </script>
+</body>
+</html>

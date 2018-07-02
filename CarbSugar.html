@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en"  style= "background-color:#1A1A1D;">
+
+<head>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/vega/3.0.8/vega.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-lite/2.0.3/vega-lite.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-embed/3.0.0-rc7/vega-embed.js"></script>
+   
+<title>Daniel Lenehan - G3</title>
+
+<style>
+         .vega-actions a {
+         padding: 0.5em;
+         }
+* {
+    box-sizing: border-box;
+	}
+.column 
+{
+    float: left;
+    padding: 10px;
+}
+
+.column.middle 
+{
+    width: 100%;
+}
+strong
+{
+color:#C3073F;
+text-decoration: underline;
+}
+@media (max-width: 600px) 
+{
+ .column.side, .column.middle 
+ {
+    width: 100%;
+}
+}
+table, td, th {
+    border: 1px solid black;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+tr:nth-child(odd){background-color: #f2f2f2}
+td {
+    height: 50px;
+    vertical-align: bottom;
+}
+
+</style>
+
+</head>
+
+<body>
+
+  <!-- This div for that contains the graph and the heading of the graph -->
+  
+  <div class="column middle" >
+<center>    <h2 style="color:white;text-decoration:underline;">Sugar quantity  vs Total Carbohydrate quantity.</h2>  </center>
+<p id="vis" align="center"></p><br/>
+  </div>
+
+<div class="row">
+ 
+<!-- This is the table below the graph --> 
+
+<div class="column side"  style="width:100%;color:#4056A1;border-style: solid;text-align:left;background-color:white;border-color:#1A1A1D;">
+ 
+    <table >
+    <tbody>
+	    <td style="width: 125px; vertical-align: top;"><strong>Name</strong></td>
+    <td style="vertical-align: top;">Daniel Lenehan <br></br></td>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;"><strong>Student Number:</strong></td>
+    <td style="vertical-align: top;">15499152 <br></br></td>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;"><strong>Dataset description:</strong></td>
+    <td style="vertical-align: top;">
+    <a href="https://raw.githubusercontent.com/pffy/data-mcdonalds-nutritionfacts/v29/textfiles/pffy-data-mcdonalds-nutrition-facts.tsv" target="_blank" rel="noopener">McDonalds Menu Dataset</a> <br>
+    This data set contains  nutritional information about McDonald's  food menu updated up to 2015. It contains fields like Item name, food category, calories and fields for all the macro-nutrients (protein,  carbohydrates, fat, sugar, fiber etc) . <br></br>
+    </td>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;"><strong>Initial questions:</strong></td>
+    <td style="vertical-align: top;">What are the differences in the carbohydrate make up between the different categories. Which categories contain more simple carbohydrates (sugar) or complex carbohydrates (potato, bread etc) . Which categories contain similar amounts of sugar to carbohydrates i.e. contain nearly all sugar or  simple carbohydrates.  Which type of carbohydrate simple or complex is likely to lead to more overall total carbohydrates?	</td>
+    </tr>
+    <tr>
+    <td style="width: 125px; vertical-align: top;"><strong>Description:&nbsp;</strong></td>
+    <td style="vertical-align: top;">There are six graphs on this page. The three on the left represent all the drink categories and the three on the right represent all the whole food meal categories. There aren't any data for complex carbohydrates in the dataset however if a category or food item has a similar amount of simple carbohydrates as total calories it means this item/ category does not have many complex carbohydrates and as a result is very high in sugar. The x-axis of every graph is Carbohydrates and the y-axis is sugar. The y-axis of every graph also indicates what category the graph represents.  The tool-tip displays what food or drink item each circle represents. <br></br></td>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;"><strong>Insight:</strong></td>
+    <td style="vertical-align: top;">The graph shows a lot of information some expected and some kind of surprising. On first glance we can see straight away the the drink categories contain way more sugar and carbohydrates. The drink graphs carbohydrates and sugar axis are of similar size but when compared to the meal graphs which have a much larger x-axis proportionally to  the y-axis.  In the three graphs on the right that all represent drink categories we can see a clear trend. As the number of grams of sugar  go up so does the total number of carbohydrates in a linear fashion.  First of all it shows  the majority the drinks available are very high in sugar because at least 80% of them are above 30g of sugar. The daily recommended amount of sugar for women being 25g and men 38g.  So more often than not you'll have drank your  daily allowance in sugar after one drink not even a meal. Secondly it shows that there no complex carbohydrates in the drinks which are considered the more healthy carbohydrates.  The three graphs on the left are also quite interesting in general it shows the opposite trends to the drink categories however it has much more outliers. In general we can see there is usually a good deal more carbohydrates then sugar whereas the three drink category graphs maintained a similar level of each throughout.  This shows that there are a lot more complex carbohydrates in the meal items of the menu.  However there is still a noticeable amount of items in the meal categories that have similar levels of sugar and total carbohydrates and even though the proportions of sugar to total carbohydrates are much smaller than the drink categories there is still an alarming amount of sugar in most of the food items.  This is surprising because a lot of the food items should be just complex carbohydrates like potato however they still contain simple carbohydrates (sugar). Overall it shows the McDonalds menu as a whole has a trend of being high in sugar and  even in meals you would expect to be complex carbohydrate rich they will most likely have lots of added sugar.  
+<br></br></td>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;"><strong>Design Considerations:</strong></td>
+    <td style="vertical-align: top;">
+I used circle plot graphs to show a rough idea of the number of items in each category. Each category has a different color, and this color gets darker as more items have similar data values which shows trends in the data quite effectively. I collapsed the x-axis of all graphs into one x-axis at the bottom of the graph  and removed all the grid lines for a change because it removed some redundancy and looked better in my opinion.  I also added color and the category name to each of the y-axis to help with easier understanding of the data. <br> </br>
+Some limitations include not being able to get information on every item with tool-tip or get the exact number of items, this is due to over plotting in some areas of the graph due to similar values. As well as this although the y-axis labels show a lot of information they can look a bit messy at times. 
+	<br></br>
+	At first I binned the values however I went back to normal display as I felt although it clearly showed the same trend it did not give a good idea about some of the outliers and the number of items as a whole. I also felt it made the graph trends look almost too linear when they were not so clearly linear.  I also considered just making three graphs and layering the 6 categories on top of each other. I would have had only two colors, one for the drink categories and one for the whole food categories. This would have been possible as the drink categories quite clearly have linear trends and the food categories do not. So the distinction would be clear. The main reason I didn't go with this idea for the graph is because of the differences in the y-axis of drink graphs and whole food graphs. 
+ 	
+	<br></br>
+    </td>
+    </tr>
+    <tr>
+    <td style="vertical-align: top;"><strong>Data filtering and transformation: </strong></td>
+    <td style="vertical-align: top;">The only filtering I did in both sections was in picking the six categories, three for drinks and three for meal items. In the first three graphs on the left representing the drinks I also filtered out any items not greater than 0g of carbohydrates this could eliminate all the water and other no calorie drinks.</td>
+    </tr>
+    </tbody>
+    </table>
+  </div>
+
+  </div>
+  
+  <!-- This is where the Vega lite code is  located..within script--> 
+  
+  <script type="text/javascript">
+    var yourVlSpec =  {
+  "config":{
+    "background": "beige"
+  },
+    "description": "These charts compare the differences in carbs and sugar between drinks and whole food meals.",
+  "$schema": 
+  "https://vega.github.io/schema/vega-lite/v2.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/pffy/data-mcdonalds-nutritionfacts/v29/textfiles/pffy-data-mcdonalds-nutrition-facts.tsv",
+    "format": {
+      "type": "tsv"
+    }
+  },
+  "hconcat": [
+    {
+  "transform": [
+    {"filter": {"field": "CATEGORY", "oneOf":["BEVERAGE", "MCCAFE", "DESSERTSHAKE"]}},
+        {"calculate": "( (datum.CARB * 4 ) / datum.CAL ) * 100 " , "as":
+"SGR_CALS"},
+    {"calculate": "( (datum.SGR * 4 ) / datum.CAL ) * 100 " , "as":
+"CARB_CALS"},
+    {
+      "filter": "datum.CARB > 0 "
+    }
+],
+    "title": {
+      "text": "Sugar vs Total Carbohydrates (Drink categories)",
+      "anchor": "middle"
+  },
+  "width": 500,
+  "height": 200,
+  "mark": "circle",
+  "encoding": {
+      "x": {
+          "field": "CARB",
+          "type": "quantitative",
+          "axis": {
+              "title": "Total Carbohydrates (g)",
+              "grid": false
+          }
+      },
+      "y": {
+          "field": "SGR",
+          "type": "quantitative",
+          "axis": {
+              "grid": false,
+              "title": "Sugar (g)"
+          }
+      },
+      "row": {
+          "field": "CATEGORY",
+          "type": "ordinal"
+      },
+                  "color":{
+            "field": "CATEGORY",
+            "type" : "ordinal",
+            "scale": {"range": ["red", "orange", "green", "blue", "black", "purple"]}
+      },
+      	      "tooltip": {
+      "field": "ITEM",
+      "type": "ordinal"
+    }
+  }
+},
+
+
+
+    {
+  "transform": [
+    {"filter": {"field": "CATEGORY", "oneOf":["BURGERSANDWICH", "CHICKENFISH", "BREAKFAST"]}},
+        {"calculate": "( (datum.CARB * 4 ) / datum.CAL ) * 100 " , "as":
+"SGR_CALS"},
+    {"calculate": "( (datum.SGR * 4 ) / datum.CAL ) * 100 " , "as":
+"CARB_CALS"}
+],
+    "title": {
+      "text": "Sugar vs Total Carbohydrates (Whole Food categories)",
+      "anchor": "middle"
+  },
+  "width": 500,
+  "height": 200,
+  "mark": "circle",
+  "encoding": {
+      "x": {
+          "field": "CARB",
+          "type": "quantitative",
+          "axis": {
+              "title": "Total Carbohydrates (g)",
+              "grid": false
+          }
+      },
+      "y": {
+          "field": "SGR",
+          "type": "quantitative",
+              "bin": true,
+          "axis":
+           {
+              "grid": false,
+              "title": "Sugar (g)"
+          }
+      },
+      "row": {
+          "field": "CATEGORY",
+          "type": "ordinal"
+      },
+            "color":{
+            "field": "CATEGORY",
+            "type" : "ordinal",
+            "scale": {"range": ["red", "yellow", "green", "blue", "organe", "purple"]}
+      },
+      	      "tooltip": {
+      "field": "ITEM",
+      "type": "ordinal"
+    }
+  }
+}
+]
+}
+        vegaEmbed("#vis", yourVlSpec);
+  </script>
+</body>
+</html>
